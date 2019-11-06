@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MoreThanMeetsTheAPI.Transformer {
 
-    public class Repository : Transformer.IRepository {
+    public class BaseRepository : IBaseRepository {
 
         string connectionString;
 
