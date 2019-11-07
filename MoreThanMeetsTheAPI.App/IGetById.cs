@@ -6,8 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MoreThanMeetsTheAPI {
-    public interface IFindById<A> where A : class {
+    public interface IGetById<A> where A : class {
 
-        public Func<HttpRequest, HttpResponse, RouteData, Task> IFindById(int id);
+        public Func<HttpRequest, HttpResponse, RouteData, Task> GetById();
     }
 }

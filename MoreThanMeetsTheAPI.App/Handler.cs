@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Carter.Response;
+using Carter.Request;
 
 namespace MoreThanMeetsTheAPI {
-    public class Handler<A> : IFindById<A>, IFindAll<A> where A : class {
+    public class Handler<A> : IGetById<A>, IGetAll<A> where A : class {
 
         IBaseRepository<A> repo;
 
@@ -15,15 +14,16 @@ namespace MoreThanMeetsTheAPI {
             this.repo = repo;
         }
 
-        public Func<HttpRequest, HttpResponse, RouteData, Task> FindAll() {
+        public Func<HttpRequest, HttpResponse, RouteData, Task> GetAll() {
             return async (req, res, routeData) => {
                 var data = await repo.FindAll();
                 await res.AsJson(data);
             };
         }
 
-        public Func<HttpRequest, HttpResponse, RouteData, Task> IFindById(int id) {
+        public Func<HttpRequest, HttpResponse, RouteData, Task> GetById() {
             return async (req, res, routeData) => {
+                var id = routeData.As<int>("id");
                 var data = await repo.FindById(id);
                 await res.AsJson(data);
             };

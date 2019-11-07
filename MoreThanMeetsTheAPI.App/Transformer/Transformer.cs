@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MoreThanMeetsTheAPI.Transformer {
-    public class Dto {
+    public class Transformer {
 
         string? Name { get; set; }
         string? Faction { get; set; }
