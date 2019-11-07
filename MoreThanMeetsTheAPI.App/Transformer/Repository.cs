@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MoreThanMeetsTheAPI.Transformer {
 
-    public class BaseRepository : IBaseRepository {
+    public class Repository : IBaseRepository<Transformer> {
 
         string connectionString;
 
@@ -19,14 +19,14 @@ namespace MoreThanMeetsTheAPI.Transformer {
 
         private IDbConnection connection(string connString) => new SqlConnection(connString);
 
-        public async Task<IEnumerable<Dto>> FindAll() {
+        public async Task<IEnumerable<Transformer>> FindAll() {
             using (var conn = connection(this.connectionString)) {
                 conn.Open();
-                return await conn.QueryAsync<Dto>("SELECT * FROM transformer_view");
+                return await conn.QueryAsync<Transformer>("SELECT * FROM transformer_view");
             }
         }
 
-        public async Task<Dto?> FindById(int id) {
+        public async Task<Transformer?> FindById(int id) {
             using (var conn = connection(this.connectionString)) {
                 conn.Open();
                 return await conn.QuerySingleAsync("SELECT * FROM transformer_view WHERE id = @Id", new { Id = id });

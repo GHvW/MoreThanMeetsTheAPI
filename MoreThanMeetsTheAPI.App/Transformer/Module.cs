@@ -7,12 +7,12 @@ using System.Text;
 namespace MoreThanMeetsTheAPI.Transformer {
     class Module : CarterModule {
 
-        public Module(Transformer.IRepository repo) {
+        //public Module(Transformer.IRepository repo) {
 
-            this.Get("/", async (req, res, routeData) => {
-                var transformers = await repo.FindAll();
-                await res.AsJson(transformers);
-            });
-        }
+        //    this.Get("/", async (req, res, routeData) => {
+        //        var transformers = await repo.FindAll();
+        //        await res.AsJson(transformers);
+        //    });
+        //}
     }
 }
