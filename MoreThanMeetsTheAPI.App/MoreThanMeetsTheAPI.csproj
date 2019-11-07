@@ -11,5 +11,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.0" />
     <PackageReference Include="Carter" Version="4.2.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Installment\" />
+    <Folder Include="Ability\" />
+    <Folder Include="Series\" />
   </ItemGroup>
 </Project>
