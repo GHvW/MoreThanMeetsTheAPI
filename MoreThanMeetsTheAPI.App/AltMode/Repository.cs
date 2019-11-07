@@ -1,15 +1,11 @@
 ﻿using Dapper;
-using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace MoreThanMeetsTheAPI.Transformer {
-
-    public class Repository : IBaseRepository<Transformer> {
+namespace MoreThanMeetsTheAPI.AltMode {
+    public class Repository {
 
         string connectionString;
 
@@ -19,17 +15,17 @@ namespace MoreThanMeetsTheAPI.Transformer {
 
         private IDbConnection connect(string connString) => new SqlConnection(connString);
 
-        public async Task<IEnumerable<Transformer>> FindAll() {
+        public async Task<IEnumerable<AltMode>> FindAll() {
             using (var conn = connect(this.connectionString)) {
                 conn.Open();
-                return await conn.QueryAsync<Transformer>("SELECT * FROM transformer_view");
+                return await conn.QueryAsync<AltMode>("SELECT * FROM alt_mode_view");
             }
         }
 
-        public async Task<Transformer?> FindById(int id) {
+        public async Task<AltMode?> FindById(int id) {
             using (var conn = connect(this.connectionString)) {
                 conn.Open();
-                return await conn.QuerySingleAsync<Transformer>("SELECT * FROM transformer_view WHERE id = @Id", new { Id = id });
+                return await conn.QuerySingleAsync<AltMode>("SELECT * FROM alt_mode_view WHERE id = @Id", new { Id = id });
             }
         }
     }

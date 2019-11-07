@@ -5,15 +5,15 @@ using System.Text;
 namespace MoreThanMeetsTheAPI.Transformer {
     public class Transformer {
 
-        string? Name { get; set; }
-        string? Faction { get; set; }
-        IEnumerable<int> AltModes { get; set; } = new List<int>();
-        IEnumerable<int> Groups { get; set; } = new List<int>();
-        IEnumerable<int> Weapons { get; set; } = new List<int>();
-        IEnumerable<int> Abilities { get; set; } = new List<int>();
-        IEnumerable<int> Appearances { get; set; } = new List<int>();
-        DateTime? Created { get; set; }
-        int? Id { get; set; }
+        public string? Name { get; set; }
+        public string? Faction { get; set; }
+        public IEnumerable<int> AltModes { get; set; } = new List<int>();
+        public IEnumerable<int> Groups { get; set; } = new List<int>();
+        public IEnumerable<int> Weapons { get; set; } = new List<int>();
+        public IEnumerable<int> Abilities { get; set; } = new List<int>();
+        public IEnumerable<int> Appearances { get; set; } = new List<int>();
+        public DateTime? Created { get; set; }
+        public int? Id { get; set; }
 
         //public Dto(
         //    string name, 

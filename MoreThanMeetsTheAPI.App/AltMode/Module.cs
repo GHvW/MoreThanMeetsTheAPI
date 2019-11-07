@@ -1,14 +1,13 @@
 ﻿using Carter;
-using Carter.Response;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MoreThanMeetsTheAPI.Transformer {
+namespace MoreThanMeetsTheAPI.AltMode {
 
-    class Module : CarterModule {
+    public class Module : CarterModule {
 
-        public Module(Handler<Transformer> handler) {
+        public Module(Handler<AltMode> handler) {
 
             this.Get("/", handler.GetAll());
 
