@@ -6,7 +6,14 @@ namespace MoreThanMeetsTheAPI {
 
     public class Startup {
 
+        public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile($"appsettings.json", optional: false, reloadOnChange: true)
+            .AddEnvironmentVariables()
+            .Build();
+        
         public void ConfigureServices(IServiceCollection services) {
+            services.Configure<Config>(Configuration.GetConnectionString("Postgres"));
             services.AddCarter();
         }
         
