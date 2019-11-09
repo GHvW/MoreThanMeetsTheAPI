@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,8 +12,8 @@ namespace MoreThanMeetsTheAPI.Weapon {
     class Repository {
         string connectionString;
 
-        public Repository(string connectionString) {
-            this.connectionString = connectionString;
+        public Repository(IConfiguration config) {
+            this.connectionString = config.GetConnectionString("Postgres");
         }
 
         private IDbConnection connect(string connString) => new SqlConnection(connString);

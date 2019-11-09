@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,8 +10,8 @@ namespace MoreThanMeetsTheAPI.AltMode {
 
         string connectionString;
 
-        public Repository(string connectionString) {
-            this.connectionString = connectionString;
+        public Repository(IConfiguration config) {
+            this.connectionString = config.GetConnectionString("Postgres");
         }
 
         private IDbConnection connect(string connString) => new SqlConnection(connString);
