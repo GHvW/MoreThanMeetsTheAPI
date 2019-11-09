@@ -16,8 +16,12 @@ namespace MoreThanMeetsTheAPI {
 
         public Func<HttpRequest, HttpResponse, RouteData, Task> GetAll() {
             return async (req, res, routeData) => {
-                var data = await repo.FindAll();
-                await res.AsJson(data);
+                try {
+                    var data = await repo.FindAll();
+                    await res.AsJson(data);
+                } catch (Exception ex) {
+                    Console.WriteLine($"Issue: {ex.ToString()}");
+                }
             };
         }
 

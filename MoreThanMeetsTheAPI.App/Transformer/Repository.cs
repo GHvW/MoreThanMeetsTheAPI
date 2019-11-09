@@ -1,11 +1,9 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
-using System;
+using Npgsql;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MoreThanMeetsTheAPI.Transformer {
@@ -18,7 +16,7 @@ namespace MoreThanMeetsTheAPI.Transformer {
             this.connectionString = config.GetConnectionString("Postgres");
         }
 
-        private IDbConnection connect(string connString) => new SqlConnection(connString);
+        private IDbConnection connect(string connString) => new NpgsqlConnection(connString);
 
         public async Task<IEnumerable<Transformer>> FindAll() {
             using (var conn = connect(this.connectionString)) {

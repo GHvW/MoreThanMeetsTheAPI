@@ -1,12 +1,12 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
+using Npgsql;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 namespace MoreThanMeetsTheAPI.AltMode {
-    public class Repository {
+    public class Repository : IBaseRepository<AltMode> {
 
         string connectionString;
 
@@ -14,7 +14,7 @@ namespace MoreThanMeetsTheAPI.AltMode {
             this.connectionString = config.GetConnectionString("Postgres");
         }
 
-        private IDbConnection connect(string connString) => new SqlConnection(connString);
+        private IDbConnection connect(string connString) => new NpgsqlConnection(connString);
 
         public async Task<IEnumerable<AltMode>> FindAll() {
             using (var conn = connect(this.connectionString)) {

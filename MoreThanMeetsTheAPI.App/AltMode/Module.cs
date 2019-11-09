@@ -7,11 +7,11 @@ namespace MoreThanMeetsTheAPI.AltMode {
 
     public class Module : CarterModule {
 
-        public Module(Handler<AltMode> handler) {
+        public Module(IGetAll<AltMode> allHandler, IGetById<AltMode> idHandler) {
 
-            this.Get("/", handler.GetAll());
+            this.Get("/", allHandler.GetAll());
 
-            this.Get("/{id:int}", handler.GetById());
+            this.Get("/{id:int}", idHandler.GetById());
         }
     }
 }
