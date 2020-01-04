@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace MoreThanMeetsTheAPI {
     public interface IGetAll<A> where A : class {
 
-        public Func<HttpRequest, HttpResponse, RouteData, Task> GetAll();
+        public Task GetAll(HttpRequest req, HttpResponse res, RouteData routeData);
     }
 }

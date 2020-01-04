@@ -9,9 +9,9 @@ namespace MoreThanMeetsTheAPI.AltMode {
 
         public Module(IGetAll<AltMode> allHandler, IGetById<AltMode> idHandler) {
 
-            this.Get("/", allHandler.GetAll());
+            this.Get("/", allHandler.GetAll);
 
-            this.Get("/{id:int}", idHandler.GetById());
+            this.Get("/{id:int}", idHandler.GetById);
         }
     }
 }
