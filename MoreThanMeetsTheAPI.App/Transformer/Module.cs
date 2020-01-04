@@ -9,7 +9,7 @@ namespace MoreThanMeetsTheAPI.Transformer {
 
     public class Module : CarterModule {
 
-        public Module(IGetById<Transformer> idHandler, IGetAll<Transformer> allHandler) {
+        public Module(IGetById<Model> idHandler, IGetAll<Model> allHandler) {
 
             this.Get("/api/transformer/", allHandler.GetAll());
             //this.Get("/api/transformer", async (req, res, routeData) => {

@@ -6,7 +6,7 @@ using System.Data;
 using System.Threading.Tasks;
 
 namespace MoreThanMeetsTheAPI.AltMode {
-    public class Repository : IBaseRepository<AltMode> {
+    public class Repository : IBaseRepository<Model> {
 
         string connectionString;
 
@@ -14,19 +14,19 @@ namespace MoreThanMeetsTheAPI.AltMode {
             this.connectionString = config.GetConnectionString("Postgres");
         }
 
-        private IDbConnection connect(string connString) => new NpgsqlConnection(connString);
+        private IDbConnection Connect(string connString) => new NpgsqlConnection(connString);
 
-        public async Task<IEnumerable<AltMode>> FindAll() {
-            using (var conn = connect(this.connectionString)) {
+        public async Task<IEnumerable<Model>> FindAll() {
+            using (var conn = Connect(this.connectionString)) {
                 conn.Open();
-                return await conn.QueryAsync<AltMode>("SELECT * FROM alt_mode_view");
+                return await conn.QueryAsync<Model>("SELECT * FROM alt_mode_view");
             }
         }
 
-        public async Task<AltMode?> FindById(int id) {
-            using (var conn = connect(this.connectionString)) {
+        public async Task<Model?> FindById(int id) {
+            using (var conn = Connect(this.connectionString)) {
                 conn.Open();
-                return await conn.QuerySingleAsync<AltMode>("SELECT * FROM alt_mode_view WHERE id = @Id", new { Id = id });
+                return await conn.QuerySingleAsync<Model>("SELECT * FROM alt_mode_view WHERE id = @Id", new { Id = id });
             }
         }
     }

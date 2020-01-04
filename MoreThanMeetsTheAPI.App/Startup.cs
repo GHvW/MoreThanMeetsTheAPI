@@ -17,12 +17,13 @@ namespace MoreThanMeetsTheAPI {
         public void ConfigureServices(IServiceCollection services) {
             //services.Configure<Config>(Configuration.GetConnectionString("Postgres"));
             services.AddSingleton(Configuration);
-            services.AddScoped<IBaseRepository<Transformer.Transformer>, Transformer.Repository>();
-            services.AddScoped<IBaseRepository<AltMode.AltMode>, AltMode.Repository>();
-            services.AddScoped<IGetById<Transformer.Transformer>, Handler<Transformer.Transformer>>();
-            services.AddScoped<IGetAll<Transformer.Transformer>, Handler<Transformer.Transformer>>();
-            services.AddScoped<IGetById<AltMode.AltMode>, Handler<AltMode.AltMode>>();
-            services.AddScoped<IGetAll<AltMode.AltMode>, Handler<AltMode.AltMode>>();
+            // make transirnt?
+            services.AddScoped<IBaseRepository<Transformer.Model>, Transformer.Repository>();
+            services.AddScoped<IBaseRepository<AltMode.Model>, AltMode.Repository>();
+            services.AddScoped<IGetById<Transformer.Model>, Handler<Transformer.Model>>();
+            services.AddScoped<IGetAll<Transformer.Model>, Handler<Transformer.Model>>();
+            services.AddScoped<IGetById<AltMode.Model>, Handler<AltMode.Model>>();
+            services.AddScoped<IGetAll<AltMode.Model>, Handler<AltMode.Model>>();
             services.AddCarter();
         }
         

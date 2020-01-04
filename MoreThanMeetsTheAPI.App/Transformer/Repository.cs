@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MoreThanMeetsTheAPI.Transformer {
 
-    public class Repository : IBaseRepository<Transformer> {
+    public class Repository : IBaseRepository<Model> {
 
         string connectionString;
 
@@ -18,17 +18,17 @@ namespace MoreThanMeetsTheAPI.Transformer {
 
         private IDbConnection connect(string connString) => new NpgsqlConnection(connString);
 
-        public async Task<IEnumerable<Transformer>> FindAll() {
+        public async Task<IEnumerable<Model>> FindAll() {
             using (var conn = connect(this.connectionString)) {
                 conn.Open();
-                return await conn.QueryAsync<Transformer>("SELECT * FROM transformer_view");
+                return await conn.QueryAsync<Model>("SELECT * FROM transformer_view");
             }
         }
 
-        public async Task<Transformer?> FindById(int id) {
+        public async Task<Model?> FindById(int id) {
             using (var conn = connect(this.connectionString)) {
                 conn.Open();
-                return await conn.QuerySingleAsync<Transformer>("SELECT * FROM transformer_view WHERE id = @Id", new { Id = id });
+                return await conn.QuerySingleAsync<Model>("SELECT * FROM transformer_view WHERE id = @Id", new { Id = id });
             }
         }
     }

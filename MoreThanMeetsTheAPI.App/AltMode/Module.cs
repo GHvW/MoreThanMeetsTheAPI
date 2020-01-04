@@ -7,7 +7,7 @@ namespace MoreThanMeetsTheAPI.AltMode {
 
     public class Module : CarterModule {
 
-        public Module(IGetAll<AltMode> allHandler, IGetById<AltMode> idHandler) {
+        public Module(IGetAll<Model> allHandler, IGetById<Model> idHandler) {
 
             this.Get("/", allHandler.GetAll);
 
