@@ -17,9 +17,10 @@ namespace MoreThanMeetsTheAPI {
         public void ConfigureServices(IServiceCollection services) {
             //services.Configure<Config>(Configuration.GetConnectionString("Postgres"));
             services.AddSingleton(Configuration);
-            // make transirnt?
-            services.AddScoped<IBaseRepository<Transformer.Model>, Transformer.Repository>();
-            services.AddScoped<IBaseRepository<AltMode.Model>, AltMode.Repository>();
+            services.AddSingleton<Transformer.Queries>();
+            // make transient?
+            services.AddScoped<IRepository<Transformer.Model>, Transformer.Repository>();
+            services.AddScoped<IRepository<AltMode.Model>, AltMode.Repository>();
             services.AddScoped<IGetById<Transformer.Model>, Handler<Transformer.Model>>();
             services.AddScoped<IGetAll<Transformer.Model>, Handler<Transformer.Model>>();
             services.AddScoped<IGetById<AltMode.Model>, Handler<AltMode.Model>>();

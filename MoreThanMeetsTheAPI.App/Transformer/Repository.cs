@@ -3,12 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Npgsql;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MoreThanMeetsTheAPI.Transformer {
 
-    public class Repository : IBaseRepository<Model> {
+    public class Repository : IRepository<Model> {
 
         string connectionString;
 

@@ -11,12 +11,10 @@ namespace MoreThanMeetsTheAPI.Transformer {
 
         public Module(IGetById<Model> idHandler, IGetAll<Model> allHandler) {
 
-            this.Get("/api/transformer/", allHandler.GetAll());
-            //this.Get("/api/transformer", async (req, res, routeData) => {
-            //    await res.WriteAsync("Well, I got here");
-            //});
+            this.Get("/api/transformer/", allHandler.GetAll);
 
-            this.Get("/api/transformer/{id:int}", idHandler.GetById());
+
+            this.Get("/api/transformer/{id:int}", idHandler.GetById);
         }
     }
 }
