@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MoreThanMeetsTheAPI.Transformer {
-    public class Queries {
 
-        public readonly string GetAll = "SELECT * FROM transformer_view";
-        public readonly string GetById = "SELECT * FROM transformer_view WHERE id = @Id";
+    public class Queries : IRepositoryQueries {
+
+        public string GetAll { get; } = "SELECT * FROM transformer_view";
+
+        public string GetById { get; } = "SELECT * FROM transformer_view WHERE id = @Id";
     }
 }
