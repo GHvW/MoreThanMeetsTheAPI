@@ -21,7 +21,6 @@
   <ItemGroup>
     <Folder Include="Installment\" />
     <Folder Include="Ability\" />
-    <Folder Include="Series\" />
   </ItemGroup>
 
   <ItemGroup>

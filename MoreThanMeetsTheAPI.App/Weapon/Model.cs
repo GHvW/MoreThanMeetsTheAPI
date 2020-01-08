@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MoreThanMeetsTheAPI.Weapon {
-    public class Weapon {
+    public class Model {
 
         public string? Name { get; set; }
         public IEnumerable<Transformer.Model> transformers { get; set; } = new List<Transformer.Model>();

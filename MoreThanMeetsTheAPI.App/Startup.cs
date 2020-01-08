@@ -18,11 +18,18 @@ namespace MoreThanMeetsTheAPI {
             //services.Configure<Config>(Configuration.GetConnectionString("Postgres"));
             services.AddSingleton(Configuration);
 
+            var prefix = "/api";
             services.Configure<Transformer.Routes>(routes => {
-                routes.Base = "/api/transformer";
+                routes.Base = $"{prefix}/transformer";
             });
             services.Configure<AltMode.Routes>(routes => {
-                routes.Base = "/api/altmode";
+                routes.Base = $"{prefix}/altmode";
+            });
+            services.Configure<Weapon.Routes>(routes => {
+                routes.Base = $"{prefix}/weapon";
+            });
+            services.Configure<Series.Routes>(routes => {
+                routes.Base = $"{prefix}/series";
             });
 
             services.AddSingleton<Transformer.Queries>();
