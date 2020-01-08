@@ -4,17 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 
 namespace MoreThanMeetsTheAPI.Transformer {
 
     public class Module : CarterModule {
 
-        public Module(IGetById<Model> idHandler, IGetAll<Model> allHandler) {
+        public Module(
+            IGetById<Model> idHandler, 
+            IGetAll<Model> allHandler, 
+            IOptions<Routes> routes) 
+            : base(routes.Value.Base) {
 
-            this.Get("/api/transformer/", allHandler.GetAll);
+            this.Get("/", allHandler.GetAll);
 
-
-            this.Get("/api/transformer/{id:int}", idHandler.GetById);
+            this.Get("/{id:int}", idHandler.GetById);
         }
     }
 }

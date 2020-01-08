@@ -6,6 +6,7 @@ using Carter.Response;
 using Carter.Request;
 
 namespace MoreThanMeetsTheAPI {
+
     public class Handler<A> : IGetById<A>, IGetAll<A> where A : class {
 
         IRepository<A> repo; // azure repos code coverage https://docs.microsoft.com/en-us/azure/devops/pipelines/test/codecoverage-for-pullrequests?view=azure-devops

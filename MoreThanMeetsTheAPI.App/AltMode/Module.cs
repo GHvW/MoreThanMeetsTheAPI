@@ -1,4 +1,5 @@
 ﻿using Carter;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,11 +8,15 @@ namespace MoreThanMeetsTheAPI.AltMode {
 
     public class Module : CarterModule {
 
-        public Module(IGetAll<Model> allHandler, IGetById<Model> idHandler) {
+        public Module(
+            IGetAll<Model> allHandler, 
+            IGetById<Model> idHandler, 
+            IOptions<Routes> routes) 
+            : base(routes.Value.Base) {
 
-            this.Get("api/altdmode/", allHandler.GetAll);
+            this.Get("/", allHandler.GetAll);
 
-            this.Get("api/altmode/{id:int}", idHandler.GetById);
+            this.Get("/{id:int}", idHandler.GetById);
         }
     }
 }
