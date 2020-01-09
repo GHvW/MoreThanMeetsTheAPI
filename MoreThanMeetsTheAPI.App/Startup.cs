@@ -34,15 +34,24 @@ namespace MoreThanMeetsTheAPI {
 
             services.AddSingleton<Transformer.Queries>();
             services.AddSingleton<AltMode.Queries>();
+            services.AddSingleton<Weapon.Queries>();
             // make transient?
             //services.AddScoped<IRepository<Transformer.Model>, Transformer.Repository>();
             services.AddScoped<IRepository<Transformer.Model>, Repository<Transformer.Model, Transformer.Queries>>();
+
             //services.AddScoped<IRepository<AltMode.Model>, AltMode.Repository>();
             services.AddScoped<IRepository<AltMode.Model>, Repository<AltMode.Model, AltMode.Queries>>();
+
+            services.AddScoped<IRepository<Weapon.Model>, Repository<Weapon.Model, Weapon.Queries>>();
+            //services.AddScoped<IRepository<Series.Model>, Repository<Series.Model, Series.Queries>>();
             services.AddScoped<IGetById<Transformer.Model>, Handler<Transformer.Model>>();
             services.AddScoped<IGetAll<Transformer.Model>, Handler<Transformer.Model>>();
+
             services.AddScoped<IGetById<AltMode.Model>, Handler<AltMode.Model>>();
             services.AddScoped<IGetAll<AltMode.Model>, Handler<AltMode.Model>>();
+
+            services.AddScoped<IGetById<Weapon.Model>, Handler<Weapon.Model>>();
+            services.AddScoped<IGetAll<Weapon.Model>, Handler<Weapon.Model>>();
             
             services.AddCarter();
         }
