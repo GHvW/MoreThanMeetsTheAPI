@@ -14,10 +14,12 @@ namespace MoreThanMeetsTheAPI {
         public Handler(IRepository<A> repo) {
             this.repo = repo;
         }
+        
 
         public async Task GetAll(HttpRequest req, HttpResponse res, RouteData routeData) {
+            var page = req.ParsePage();
             try {
-                var data = await repo.FindAll();
+                var data = await repo.FindAll(page);
                 await res.AsJson(data);
             } catch (Exception ex) {
                 Console.WriteLine($"Issue: {ex.ToString()}");

@@ -4,6 +4,7 @@ using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,10 +23,12 @@ namespace MoreThanMeetsTheAPI {
 
         private IDbConnection Connect(string connString) => new NpgsqlConnection(connString);
 
-        public async Task<IEnumerable<A>> FindAll() {
+        public async Task<IEnumerable<A>> FindAll(int page) {
+            if (page == 0) return Enumerable.Empty<A>();
+
             using (var conn = Connect(this.connectionString)) { // ADO.NET creates a connection pool on its own behind the scenes per connection string, so if the string is the same, it uses the same connection pool
                 conn.Open();
-                return await conn.QueryAsync<A>(queries.GetAll);
+                return await conn.QueryAsync<A>(queries.GetAll, new { MinId = (page * 20) - 20, MaxId = page * 20 });
             }
         }
 
