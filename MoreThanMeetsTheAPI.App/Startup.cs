@@ -18,7 +18,7 @@ namespace MoreThanMeetsTheAPI {
             //services.Configure<Config>(Configuration.GetConnectionString("Postgres"));
             services.AddSingleton(Configuration);
 
-            var prefix = "/api";
+            var prefix = "/api"; // put this in configuration file appsettings.json
             services.Configure<Transformer.Routes>(routes => {
                 routes.Base = $"{prefix}/transformer";
             });
@@ -53,6 +53,7 @@ namespace MoreThanMeetsTheAPI {
             services.AddScoped<IGetById<Weapon.Model>, Handler<Weapon.Model>>();
             services.AddScoped<IGetAll<Weapon.Model>, Handler<Weapon.Model>>();
             
+            // TODO - this is where we can use hooks for security etc
             services.AddCarter();
         }
         

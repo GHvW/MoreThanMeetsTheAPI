@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MoreThanMeetsTheAPI.AltMode {
+    
     public class Model {
 
         public string? Type { get; set; }

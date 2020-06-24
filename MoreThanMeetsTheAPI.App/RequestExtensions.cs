@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MoreThanMeetsTheAPI {
+    
     public static class RequestExtensions {
 
         public static int ParsePage(this HttpRequest req) {

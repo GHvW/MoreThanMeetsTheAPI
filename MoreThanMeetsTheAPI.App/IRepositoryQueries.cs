@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MoreThanMeetsTheAPI {
+    
     public interface IRepositoryQueries {
 
         public string GetAll { get; }

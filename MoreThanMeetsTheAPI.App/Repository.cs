@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MoreThanMeetsTheAPI {
+    
     public class Repository<A, B> : IRepository<A> 
         where A : class
         where B : IRepositoryQueries {

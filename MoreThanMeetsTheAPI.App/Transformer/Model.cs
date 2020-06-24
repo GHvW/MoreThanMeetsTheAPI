@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace MoreThanMeetsTheAPI.Transformer {
+    
     public class Model {
 
         public string? Name { get; set; }
