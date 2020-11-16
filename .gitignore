@@ -1,5 +1,13 @@
-.vs
+*.vs
 *appsettings*
 bin
 obj
 .DS_Store
+*.vscode
+*.ionide
+*.metals
+*.user
+
+Properties
+
+WebRoot
