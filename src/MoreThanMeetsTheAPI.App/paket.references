@@ -1,0 +1,9 @@
+Dapper
+Microsoft.AspNetCore.Server.Kestrel
+Microsoft.AspNetCore.Hosting
+Carter
+Microsoft.Extensions.Configuration
+Microsoft.Extensions.Configuration.Json
+Microsoft.Extensions.DependencyInjection
+Npgsql
+System.Data.SqlClient

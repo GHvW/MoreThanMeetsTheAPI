@@ -29,6 +29,7 @@ namespace MoreThanMeetsTheAPI {
         public async Task GetById(HttpRequest req, HttpResponse res, RouteData routeData) {
             try {
                 var id = routeData.As<int>("id");
+                //var id =    
                 var data = await repo.FindById(id);
                 await res.AsJson(data);
             } catch (Exception ex) {
